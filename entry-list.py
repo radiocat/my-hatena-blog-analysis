@@ -26,4 +26,6 @@ for i in pub_entry_list:
         title=e.title.string
         print("%s,%s,%s" % (entry_id,title,published.strftime("%Y/%m/%d")))
 
-
+# 今年のエントリー数
+print("------------------------------------")
+print("total entries = %d" % entry_count)
