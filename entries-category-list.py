@@ -13,6 +13,8 @@ pub_entry_list = common.get_published_entry_list(collection_uri, settings.HATENA
 dt_now = datetime.datetime.now()
 category = {}
 
+print("category,count")
+
 for i in pub_entry_list:
     for e in i:
         # 公開日が今年のものだけ取得
