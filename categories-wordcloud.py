@@ -31,7 +31,7 @@ for i in pub_entry_list:
 # TODO:フォントのあるパスを指定する
 wordcloud = WordCloud(background_color="white",
     font_path="/System/Library/Fonts/ヒラギノ角ゴシック W0.ttc",
-    width=800,height=600).generate(' '.join(category_list))
+    width=800,height=600,collocations = False).generate(' '.join(category_list))
 
 wordcloud.to_file("./wordcloud_hatena_blog.png")
 
