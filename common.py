@@ -2,6 +2,8 @@
 import requests
 import bs4
 import time
+import datetime
+import dateutil.parser
 
 def get_collection_uri(hatena_id, blog_id, password):
     service_doc_uri = "https://blog.hatena.ne.jp/{hatena_id:}/{blog_id:}/atom".format(hatena_id=hatena_id, blog_id=blog_id)
@@ -40,3 +42,7 @@ def get_published_entry_list(collection_uri, hatena_id, password):
         time.sleep(0.01)# 10ms
 
     return pub_entry_list
+
+def get_jst_time(datetime_text):
+    return dateutil.parser.parse(datetime_text) + datetime.timedelta(hours=9)
+

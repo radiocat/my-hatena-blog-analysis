@@ -5,9 +5,7 @@ import common
 import requests
 import bs4
 import re
-import time
 import datetime
-import dateutil.parser
 
 from wordcloud import WordCloud
 
@@ -20,7 +18,7 @@ category_list = []
 for i in pub_entry_list:
     for e in i:
         # 公開日が今年のものだけ取得
-        published=dateutil.parser.parse(e.published.text) + datetime.timedelta(hours=9)
+        published=common.get_jst_time(e.published.text)
         if published.year!=dt_now.year:
             continue
         for t in e.find_all('category'):
