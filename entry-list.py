@@ -20,9 +20,17 @@ for i in pub_entry_list:
         if published.year!=dt_now.year:
             continue
         entry_count+=1
-        entry_id=e.id.string
+        entry_id=re.search(r"-(\d+)$", string=e.id.string).group(1)
         title=e.title.string
-        print("%s,%s,%s" % (entry_id,title,published.strftime("%Y/%m/%d")))
+        categories={t.get('term') for t in e.find_all('category')} - {None}
+        # 勉強会=1、読書=2、それ以外=0にタイプ分け
+        category_type=0
+        if '勉強会' in categories:
+            category_type=1
+        elif '読書' in categories:
+            category_type=2
+
+        print("%s,%s,%s,%s" % (entry_id,title,published.strftime("%Y/%m/%d"),category_type))
 
 # 今年のエントリー数
 print("------------------------------------")
